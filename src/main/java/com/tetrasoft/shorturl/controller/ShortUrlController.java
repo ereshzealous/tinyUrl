@@ -10,6 +10,7 @@ import com.tetrasoft.shorturl.rest.common.RestResponse;
 import com.tetrasoft.shorturl.service.ShortUrlService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,9 +45,9 @@ public class ShortUrlController extends BaseRestApi {
         return modelAndViewServiceCall(new Object(), service -> {
             String longUrl = shortUrlService.retrieveLongUrl(code);
             if (StringUtils.isNotBlank(longUrl)) {
-                return  new ModelAndView("redirect:" + longUrl);
+                return  new ModelAndView("redirect:" + longUrl, HttpStatus.OK);
             }
-            return new ModelAndView("tiny_not_found");
+            return new ModelAndView("tiny_not_found", HttpStatus.NOT_FOUND);
         });
     }
 }

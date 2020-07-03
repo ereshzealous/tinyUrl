@@ -1,16 +1,11 @@
 package com.tetrasoft.shorturl.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tetrasoft.shorturl.exception.ApplicationException;
 import com.tetrasoft.shorturl.exception.RestFault;
 import com.tetrasoft.shorturl.rest.common.RestApiException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,9 +16,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
 import java.text.MessageFormat;
 import java.util.Comparator;
 import java.util.List;
@@ -35,12 +27,6 @@ import java.util.stream.Collectors;
 public class RestControllerAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(RestControllerAdvice.class);
-
-    @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
-    ObjectMapper mapper;
 
     @ExceptionHandler({Exception.class})
     protected ResponseEntity<RestFault> handleException(Exception e) {

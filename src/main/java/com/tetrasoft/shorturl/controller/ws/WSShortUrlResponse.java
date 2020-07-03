@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 public class WSShortUrlResponse extends RestResponse {
     private String shortUrl;
-    private String longUrl;
     private ZonedDateTime createdDate;
     private ZonedDateTime expiryDate;
 }

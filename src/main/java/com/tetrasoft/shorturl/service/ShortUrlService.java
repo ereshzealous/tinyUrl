@@ -27,11 +27,8 @@ public class ShortUrlService {
     @Value("${base.url}")
     String BASE_URL;
 
-    @Value("${shorten.url.prefix}")
-    String SHORTEN_URL_PREFIX;
-
     public WSShortUrlResponse shortenURL(WSShortUrlRequest request) {
-        ShortUrl shortUrl = null;
+        ShortUrl shortUrl;
         Optional<ShortUrl> shortUrlOptional = shortUrlRepository.findByLongUrl(request.getLongUrl());
         if (shortUrlOptional.isPresent()) {
             shortUrl = shortUrlOptional.get();
@@ -42,7 +39,7 @@ public class ShortUrlService {
         WSShortUrlResponse response = new WSShortUrlResponse();
         response.setCreatedDate(shortUrl.getCreatedDate());
         response.setExpiryDate(shortUrl.getExpiryDate());
-        response.setShortUrl(BASE_URL.concat(SHORTEN_URL_PREFIX).concat(shortUrl.getShortCode()));
+        response.setShortUrl(BASE_URL.concat(shortUrl.getShortCode()));
         return response;
     }
 

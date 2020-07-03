@@ -18,6 +18,6 @@ public class WSShortUrlRequest {
     @URL(message = "{request.long.url.invalid.format}")
     private String longUrl;
 
-    @Range(min = -1, max = 90, message = "{request.expiry.days.not.in.range}")
+    @Range(min = 1, max = 90, message = "{request.expiry.days.not.in.range}")
     private Integer expiryDays = 1;
 }
