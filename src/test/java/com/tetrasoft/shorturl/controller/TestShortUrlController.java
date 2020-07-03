@@ -8,7 +8,6 @@ import com.tetrasoft.shorturl.persistence.repository.ShortUrlRepository;
 import com.tetrasoft.shorturl.rest.common.RestApiException;
 import com.tetrasoft.shorturl.rest.common.RestResponse;
 import com.tetrasoft.shorturl.service.ShortUrlService;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 import static org.junit.Assert.*;
